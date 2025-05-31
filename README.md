@@ -1,4 +1,4 @@
-#CMake
+# CMake
 configure CMake
 ```
 cmake -Bbuild -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -12,7 +12,7 @@ run
 ```
 .\luaugame.exe
 ```
-#Make
+# Make
 clone Luau
 ```
 git clone https://github.com/luau-lang/luau.git
