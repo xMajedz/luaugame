@@ -1,14 +1,14 @@
-Configure CMake
+configure CMake
 ```
-cmake -G"MinGW Makefiles" -Bbuild -DCMAKE_BUILD_TYPE=RelWithDebInfo
+cmake -Bbuild -DCMAKE_BUILD_TYPE=RelWithDebInfo
 ```
-Build
+build
 ```
-cmake --build build --target luaugame --config RelWithDepInfo
+cd build 
+cmake --build . --target luaugame --config RelWithDepInfo
 ```
-Run
+run
 ```
-.\build\luaugame.exe
+.\luaugame.exe
 ```
-
-you can edit ```build\main.luau```
+edit ```build\main.luau``` as you please.
