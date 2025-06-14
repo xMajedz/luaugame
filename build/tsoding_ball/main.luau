@@ -25,5 +25,5 @@ function luaugame.draw()
 	else
 		ypos = y
 	end
-	DrawCircle(xpos, ypos, radius, {255, 0, 0, 255});
+	DrawCircle(xpos, ypos, radius, {230, 41, 55, 255});
 end
