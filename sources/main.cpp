@@ -54,7 +54,7 @@ int luaugame_setup(lua_State* L)
 	}
 
 	if (!luaugame_State.CustomInitWindow)
-		InitWindow(1600, 900, "untitled luaugame");
+		InitWindow(800, 450, "untitled luaugame");
 
 	return 1;
 }
@@ -119,7 +119,7 @@ int luaugame_ClearBackground(lua_State* L)
 	lua_rawgeti(L, -4, 4);
 	color[3] = lua_tonumber(L, -1);
 
-	ClearBackground((Color){ color[0], color[1], color[2], color[3] });
+	ClearBackground((Color){color[0], color[1], color[2], color[3]});
 
 	return 1;
 }
@@ -142,14 +142,51 @@ int luaugame_DrawText(lua_State* L)
 	lua_Number x = lua_tonumber(L, -8);
 	const char* text = lua_tostring(L, -9);
 
-	DrawText(text, x, y, fontSize, (Color){ color[0], color[1], color[2], color[3] });
+	DrawText(text, x, y, fontSize, (Color){color[0], color[1], color[2], color[3]});
 
 	return 1;
+}
+
+int luaugame_DrawCircle(lua_State* L)
+{
+	unsigned char color[4];
+
+	lua_rawgeti(L, -1, 1);
+	color[0] = lua_tonumber(L, -1);
+	lua_rawgeti(L, -2, 2);
+	color[1] = lua_tonumber(L, -1);
+	lua_rawgeti(L, -3, 3);
+	color[2] = lua_tonumber(L, -1);
+	lua_rawgeti(L, -4, 4);
+	color[3] = lua_tonumber(L, -1);
+
+	lua_Number radius = lua_tonumber(L, -6);
+	lua_Number posY = lua_tonumber(L, -7);
+	lua_Number posX = lua_tonumber(L, -8);
+
+	DrawCircle(posX, posY, radius, (Color){color[0], color[1], color[2], color[3]});
+	return 1;
+}
+
+int luaugame_GetFrameTime(lua_State* L)
+{
+	lua_pushnumber(L, GetFrameTime());
+	return 1;
+}
+
+int luaugame_GetScreenSize(lua_State* L)
+{
+	lua_pushnumber(L, GetScreenWidth());
+	printf("%d", GetScreenWidth());
+	lua_pushnumber(L, GetScreenHeight());
+	printf("%d", GetScreenHeight());
+	return 2;
 }
 
 int main(int argc, char** argv)
 {
 	lua_State* L = luaL_newstate();
+	luaL_openlibs(L);
 
 	lua_pushcfunction(L, luaugame_InitWindow, "InitWindow");
 	lua_setglobal(L, "InitWindow");
@@ -160,32 +197,47 @@ int main(int argc, char** argv)
 	lua_pushcfunction(L, luaugame_DrawText, "DrawText");
 	lua_setglobal(L, "DrawText");
 
+	lua_pushcfunction(L, luaugame_DrawCircle, "DrawCircle");
+	lua_setglobal(L, "DrawCircle");
+
+	lua_pushcfunction(L, luaugame_GetScreenSize, "GetScreenSize");
+	lua_setglobal(L, "GetScreenSize");
+
+	lua_pushcfunction(L, luaugame_GetFrameTime, "GetFrameTime");
+	lua_setglobal(L, "GetFrameTime");
+
 	lua_newtable(L);
 	lua_setglobal(L, "luaugame");
 
 	if (argc > 1) {
-		if (luaugame_dofile(L, argv[0]) == LUA_OK) {
+		const char* path = TextFormat("%s/main.luau", argv[1]);
+		if (luaugame_dofile(L, path) == LUA_OK) {
 		} else {
 		}
 	} else {
-		if (luaugame_dofile(L, "./main.luau") == LUA_OK) {
+		if (luaugame_dofile(L, "main.luau") == LUA_OK) {
 		} else {
 		}
 	}
 
-	lua_getglobal(L, "luaugame");
-	if (lua_istable(L, -1)) {
+	luaL_sandbox(L);
+
+	lua_State* T = lua_newthread(L);
+	luaL_sandboxthread(T);
+
+	lua_getglobal(T, "luaugame");
+	if (lua_istable(T, -1)) {
 	} else {
 	}
-	
-	luaugame_setup(L);
+
+	luaugame_setup(T);
 
 	while (!WindowShouldClose()) {
 		if (luaugame_State.UpdateFuncExists)
-			luaugame_update(L);
+			luaugame_update(T);
 		BeginDrawing();
 			if (luaugame_State.DrawFuncExists)
-				luaugame_draw(L);
+				luaugame_draw(T);
 		EndDrawing();
 	}
 

@@ -10,7 +10,7 @@ cmake --build . --target luaugame --config RelWithDepInfo
 ```
 run
 ```
-.\luaugame.exe
+.\luaugame.exe tsoding_ball
 ```
 # Make
 clone Luau
@@ -36,6 +36,5 @@ make -C ..
 ```
 run
 ```
-./luaugame
+./luaugame.exe tsoding_ball
 ```
-edit ```build\main.luau``` as you please.
