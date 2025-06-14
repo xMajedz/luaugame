@@ -1,10 +1,12 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
-#include "lua.h"
-#include "lualib.h"
-#include "luacode.h"
-#include "raylib.h"
+
+#include <lua.h>
+#include <lualib.h>
+#include <luacode.h>
+
+#include <raylib.h>
 
 struct Bytecode {
 	size_t size;
@@ -199,9 +201,8 @@ int main(int argc, char** argv)
 	lua_pushcfunction(L, luaugame_DrawText, "DrawText");
 	lua_setglobal(L, "DrawText");
 
-	if (luaugame_dostring(L, "luaugame = {}") == LUA_OK) {
-	} else {
-	}
+	lua_newtable(L);
+	lua_setglobal(L, "luaugame");
 
 	if (argc > 1) {
 		if (luaugame_dofile(L, argv[0]) == LUA_OK) {
