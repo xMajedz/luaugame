@@ -19,67 +19,26 @@ struct State {
 	bool CustomInitWindow;
 } luaugame_State;
 
-char* read_file(const char* file_name)
+int luaugame_dostring(lua_State* L, const char* string, const char* chunkname)
 {
-	FILE* f;
-
-	f = fopen(file_name, "rb");
-
-	fseek(f, 0, SEEK_END);
-	long fsize = ftell(f);
-	fseek(f, 0, SEEK_SET);
-	char* content = (char*) malloc(fsize + 1);
-	fread(content, fsize, 1, f);
-
-	content[fsize] = '\0';
-
-	fclose(f);
-
-	return content;
+	Bytecode bytecode = {0};
+	bytecode.data = luau_compile(string, strlen(string), NULL, &bytecode.size);
+	int result = luau_load(L, chunkname, bytecode.data, bytecode.size, 0);
+	free(bytecode.data);
+	return lua_pcall(L, 0, 0, 0);
 }
 
 int luaugame_dostring(lua_State* L, const char* string)
 {
-	Bytecode bytecode = {0};
-
-	const char* chunkname = "=luaugame_dostring";
-
-	bytecode.data = luau_compile(string, strlen(string), NULL, &bytecode.size);
-
-	int result = luau_load(L, chunkname, bytecode.data, bytecode.size, 0);
-
-	free(bytecode.data);
-
-	if (result != LUA_OK)
-		return 1;
-
-	lua_resume(L, NULL, 0);
-
-	return 0;
+	return luaugame_dostring(L, string, "=dostring");
 }
 
 int luaugame_dofile(lua_State* L, const char* file_name)
 {
-	Bytecode bytecode = {0};
-
-	char* source = read_file(file_name);
-	const char* chunkname = "=luaugame_dofile";
-
-
-	bytecode.data = luau_compile(source, strlen(source), NULL, &bytecode.size);
-
-	free(source);
-
-	int result = luau_load(L, chunkname, bytecode.data, bytecode.size, 0);
-
-	free(bytecode.data);
-
-	if (result != LUA_OK)
-		return 1;
-
-	lua_resume(L, NULL, 0);
-
-	return 0;
+	char* source = LoadFileText(file_name);
+	int status = luaugame_dostring(L, source, "=dofile");
+	UnloadFileText(source);
+	return status;
 }
 
 int luaugame_setup(lua_State* L)
@@ -95,7 +54,7 @@ int luaugame_setup(lua_State* L)
 	}
 
 	if (!luaugame_State.CustomInitWindow)
-		InitWindow(800, 450, "untitled luaugame");
+		InitWindow(1600, 900, "untitled luaugame");
 
 	return 1;
 }
