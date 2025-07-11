@@ -2,15 +2,36 @@
 #include <cstdlib>
 #include <cstring>
 
-#include <lua.h>
-#include <lualib.h>
-#include <luacode.h>
+#include "lua.h"
+#include "lualib.h"
+#include "luacode.h"
 
-#include <raylib.h>
+#include "raylib.h"
 
 struct Bytecode {
-	size_t size;
-	char* data;
+private:
+	char* m_data;
+	size_t m_size;
+public:
+	Bytecode(const char* string) 
+	{
+		m_data = luau_compile(string, strlen(string), NULL, &m_size);
+	};
+
+	~Bytecode() 
+	{
+		delete m_data;
+	};
+
+	const char* data()
+	{
+		return m_data;
+	};
+
+	size_t size()
+	{
+		return m_size;
+	};
 };
 
 struct State {
@@ -21,10 +42,9 @@ struct State {
 
 int luaugame_dostring(lua_State* L, const char* string, const char* chunkname)
 {
-	Bytecode bytecode = {0};
-	bytecode.data = luau_compile(string, strlen(string), NULL, &bytecode.size);
-	int result = luau_load(L, chunkname, bytecode.data, bytecode.size, 0);
-	free(bytecode.data);
+	Bytecode bytecode(string);
+	//int result = luau_load(L, chunkname, bytecode.data(), bytecode.size(), 0);
+	luau_load(L, chunkname, bytecode.data(), bytecode.size(), 0);
 	return lua_pcall(L, 0, 0, 0);
 }
 
@@ -41,54 +61,46 @@ int luaugame_dofile(lua_State* L, const char* file_name)
 	return status;
 }
 
-int luaugame_setup(lua_State* L)
+void luaugame_setup(lua_State* L)
 {
-	lua_pushstring(L, "setup");
-	lua_gettable(L, -2);
-	if (lua_isfunction(L, -1)) {
-		if (lua_pcall(L, 0, 0, 0) == LUA_OK) {
-		} else {
+	lua_getglobal(L, "luaugame");
+	if (lua_istable(L, -1)) {
+		lua_getfield(L, -1, "setup");
+		if (lua_isfunction(L, -1)) {
+			if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
+				printf("%s\n", lua_tostring(L, -1));
+			}
 		}
 	} else {
-		lua_pop(L, -2);
 	}
 
 	if (!luaugame_State.CustomInitWindow)
 		InitWindow(800, 450, "untitled luaugame");
-
-	return 1;
 }
 
-int luaugame_update(lua_State* L)
+void luaugame_update(lua_State* L)
 {
-	lua_pushstring(L, "update");
-	lua_gettable(L, -2);
+	lua_getfield(L, -1, "update");
 	if (lua_isfunction(L, -1)) {
-		if (lua_pcall(L, 0, 0, 0) == LUA_OK) {
-		} else {
+		lua_pushnumber(L, GetFrameTime());
+		if (lua_pcall(L, 1, 0, 0) != LUA_OK) {
+			printf("%s\n", lua_tostring(L, -1));
 		}
 	} else {
 		luaugame_State.UpdateFuncExists = false;
-		lua_pop(L, -2);
 	}
-
-	return 1;
 }
 
-int luaugame_draw(lua_State* L)
+void luaugame_draw(lua_State* L)
 {
-	lua_pushstring(L, "draw");
-	lua_gettable(L, -2);
+	lua_getfield(L, -1, "draw");
 	if (lua_isfunction(L, -1)) {
-		if (lua_pcall(L, 0, 0, 0) == LUA_OK) {
-		} else {
+		if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
+			printf("%s\n", lua_tostring(L, -1));
 		}
 	} else {
 		luaugame_State.DrawFuncExists = false;
-		lua_pop(L, -2);
 	}
-
-	return 1;
 }
 
 int luaugame_InitWindow(lua_State* L)
@@ -222,28 +234,19 @@ int main(int argc, char** argv)
 
 	luaL_sandbox(L);
 
-	lua_State* T = lua_newthread(L);
-	luaL_sandboxthread(T);
+	luaugame_setup(L);
 
-	lua_getglobal(T, "luaugame");
-	if (lua_istable(T, -1)) {
-	} else {
-	}
-
-	luaugame_setup(T);
+	if (!luaugame_State.CustomInitWindow)
+		InitWindow(800, 450, "untitled luaugame");
 
 	while (!WindowShouldClose()) {
-		if (luaugame_State.UpdateFuncExists)
-			luaugame_update(T);
+		luaugame_update(L);
 		BeginDrawing();
-			if (luaugame_State.DrawFuncExists)
-				luaugame_draw(T);
+			luaugame_draw(L);
 		EndDrawing();
 	}
 
 	CloseWindow();
 
 	lua_close(L);
-
-	return 0;
 }
