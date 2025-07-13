@@ -36,7 +36,6 @@ workspace "Luau"
 		defines { "NDEBUG" }
 		optimize "On"
 
-
 project "Luau.Ast"
 	kind "StaticLib"
 	cppdialect "C++17"
@@ -62,14 +61,15 @@ project "Luau.Web"
 	kind "None"
 	filter {"options:os=emscripten"}
 	kind "ConsoleApp"
-	libdirs {path .. "/build/${prj.cfg}"}
 	includedirs {path .. "/Common/include", path .. "/Compiler/include", path .. "/VM/include"}
 	files {path .. "/CLI/src/Web.cpp"}
 	links {"luauast", "luaucompiler", "luauvm"}
 	linkoptions {
-		"-sWASM=0",
-		"-sSINGLE_FILE=1",
 		"-sEXPORTED_FUNCTIONS=['_executeScript']",
 		"-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap']",
 		"-fexceptions",
+		"-sSINGLE_FILE=1",
 	}
+	targetextension ".js"
+
+
