@@ -1,5 +1,6 @@
 newoption {
 	trigger = "luau-path",
+	default = "./vendor/luau",
 	description = "sets the path to luau distribution.",
 }
 
@@ -9,7 +10,7 @@ newoption {
 }
 
 local config = _OPTIONS["config"]
-local path = _OPTIONS["luau-path"] or "."
+local path = _OPTIONS["luau-path"]
 
 workspace "Luau"
 	language "C++"
