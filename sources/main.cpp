@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <string>
 
 #include "lua.h"
 #include "lualib.h"
@@ -8,14 +9,15 @@
 
 #include "raylib.h"
 
-struct Bytecode {
+struct Bytecode
+{
 private:
 	char* m_data;
 	size_t m_size;
 public:
-	Bytecode(const char* string) 
+	Bytecode(std::string string) 
 	{
-		m_data = luau_compile(string, strlen(string), NULL, &m_size);
+		m_data = luau_compile(string.data(), string.size(), NULL, &m_size);
 	};
 
 	~Bytecode() 
@@ -32,6 +34,15 @@ public:
 	{
 		return m_size;
 	};
+
+	int execute(lua_State* L, const char* chunkname)
+	{
+		luau_load(L, chunkname, data(), size(), 0);
+		if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
+			printf("%s\n", lua_tostring(L, -1));
+		}
+		return 1;
+	};
 };
 
 struct State {
@@ -43,9 +54,7 @@ struct State {
 int luaugame_dostring(lua_State* L, const char* string, const char* chunkname)
 {
 	Bytecode bytecode(string);
-	//int result = luau_load(L, chunkname, bytecode.data(), bytecode.size(), 0);
-	luau_load(L, chunkname, bytecode.data(), bytecode.size(), 0);
-	return lua_pcall(L, 0, 0, 0);
+	return bytecode.execute(L, chunkname);
 }
 
 int luaugame_dostring(lua_State* L, const char* string)
@@ -55,6 +64,9 @@ int luaugame_dostring(lua_State* L, const char* string)
 
 int luaugame_dofile(lua_State* L, const char* file_name)
 {
+	lua_State* T = lua_newthread(L);
+	luaL_sandboxthread(T);
+
 	char* source = LoadFileText(file_name);
 	int status = luaugame_dostring(L, source, "=dofile");
 	UnloadFileText(source);
@@ -72,6 +84,7 @@ void luaugame_setup(lua_State* L)
 			}
 		}
 	} else {
+		printf("luaugame not table\n");
 	}
 
 	if (!luaugame_State.CustomInitWindow)
@@ -223,17 +236,13 @@ int main(int argc, char** argv)
 
 	if (argc > 1) {
 		const char* path = TextFormat("%s/main.luau", argv[1]);
-		if (luaugame_dofile(L, path) == LUA_OK) {
-		} else {
-		}
+		luaugame_dofile(L, path);
 	} else {
-		if (luaugame_dofile(L, "main.luau") == LUA_OK) {
-		} else {
-		}
+		luaugame_dofile(L, "main.luau");
 	}
 
 	luaL_sandbox(L);
-
+	
 	luaugame_setup(L);
 
 	if (!luaugame_State.CustomInitWindow)
