@@ -4,3 +4,6 @@
 [submodule "vendor/raylib"]
 	path = vendor/raylib
 	url = https://github.com/raysan5/raylib.git
+[submodule "vendor/game-premake"]
+	path = vendor/game-premake
+	url = https://github.com/raylib-extras/game-premake.git
