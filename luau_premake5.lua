@@ -59,7 +59,7 @@ project "Luau.VM"
 
 project "Luau.Web"
 	kind "None"
-	filter {"options:os=emscripten"}
+	filter "system:emscripten"
 	kind "ConsoleApp"
 	includedirs {path .. "/Common/include", path .. "/Compiler/include", path .. "/VM/include"}
 	files {path .. "/CLI/src/Web.cpp"}

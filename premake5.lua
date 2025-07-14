@@ -8,3 +8,7 @@ project "luaugame"
 	links {"luaucompiler", "luauast", "luauvm", "raylib"}
 	files {"sources/main.cpp"}
 	targetdir "build/${prj.cfg}"
+
+    	filter {"system:linux or system:windows", "toolset:mingw"}
+		links {"winmm", "gdi32", "opengl32"}
+		targetextension ".exe"
