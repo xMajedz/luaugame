@@ -4,11 +4,11 @@ workspace "luaugame"
 	configurations {"release", "debug"}
     location "build"
 	targetdir "build"
-	
-	libdirs {"vendor/raylib/src", "vendor/luau/build/release"}
-	includedirs {"vendor/luau/Compiler/include", "vendor/luau/VM/include", "vendor/raylib/src"}
 
-	links {"luaucompiler", "luauast", "luauvm", "luaucommon", "luaucodegen", "raylib"}
+	includedirs {"vendor/luau/Compiler/include", "vendor/luau/VM/include", "vendor/luau/Ast/include", "vendor/luau/Bytecode/include",  "vendor/raylib/src"}	
+	libdirs {"vendor/raylib/src", "vendor/luau/build/release"}
+
+	links {"luaucompiler", "luauast", "luauvm", "luaucommon", "luaucodegen", "luaubytecode", "raylib"}
 
 	filter { "configurations:release" }
 	defines { "NDEBUG" }
