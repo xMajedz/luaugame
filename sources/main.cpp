@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include <memory>
 
 #include "lua.h"
 #include "lualib.h"
@@ -11,10 +12,6 @@
 
 struct Bytecode
 {
-private:
-	char* m_data;
-	size_t m_size;
-public:
 	Bytecode(std::string string) 
 	{
 		m_data = luau_compile(string.data(), string.size(), NULL, &m_size);
@@ -38,85 +35,56 @@ public:
 	int execute(lua_State* L, const char* chunkname)
 	{
 		luau_load(L, chunkname, data(), size(), 0);
+
 		if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
 			printf("%s\n", lua_tostring(L, -1));
+			return 1;
 		}
-		return 1;
+		
+		return 0;
 	};
+  
+private:
+	char* m_data;
+	size_t m_size;
 };
 
 struct State {
-	bool UpdateFuncExists = true;
-	bool DrawFuncExists = true;
 	bool CustomInitWindow;
+
+    int setup_ref = 0;
+    int update_ref = 0;
+    int draw_ref = 0;
 } luaugame_State;
 
-int luaugame_dostring(lua_State* L, const char* string, const char* chunkname)
+auto luaugame_dostring(lua_State* L, const char* string, const char* chunkname) -> int
 {
 	Bytecode bytecode(string);
 	return bytecode.execute(L, chunkname);
 }
 
-int luaugame_dostring(lua_State* L, const char* string)
+auto luaugame_dostring(lua_State* L, const char* string) -> int
 {
 	return luaugame_dostring(L, string, "=dostring");
 }
 
-int luaugame_dofile(lua_State* L, const char* file_name)
+auto luaugame_dofile(lua_State* L, const char* file_name) -> int
 {
+    if (!FileExists(file_name)) {
+	    return 1;
+	}
+	
 	lua_State* T = lua_newthread(L);
 	luaL_sandboxthread(T);
-
+	
 	char* source = LoadFileText(file_name);
 	int status = luaugame_dostring(L, source, "=dofile");
 	UnloadFileText(source);
 	return status;
 }
 
-void luaugame_setup(lua_State* L)
-{
-	lua_getglobal(L, "luaugame");
-	if (lua_istable(L, -1)) {
-		lua_getfield(L, -1, "setup");
-		if (lua_isfunction(L, -1)) {
-			if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
-				printf("%s\n", lua_tostring(L, -1));
-			}
-		}
-	} else {
-		printf("luaugame not table\n");
-	}
 
-	if (!luaugame_State.CustomInitWindow)
-		InitWindow(800, 450, "untitled luaugame");
-}
-
-void luaugame_update(lua_State* L)
-{
-	lua_getfield(L, -1, "update");
-	if (lua_isfunction(L, -1)) {
-		lua_pushnumber(L, GetFrameTime());
-		if (lua_pcall(L, 1, 0, 0) != LUA_OK) {
-			printf("%s\n", lua_tostring(L, -1));
-		}
-	} else {
-		luaugame_State.UpdateFuncExists = false;
-	}
-}
-
-void luaugame_draw(lua_State* L)
-{
-	lua_getfield(L, -1, "draw");
-	if (lua_isfunction(L, -1)) {
-		if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
-			printf("%s\n", lua_tostring(L, -1));
-		}
-	} else {
-		luaugame_State.DrawFuncExists = false;
-	}
-}
-
-int luaugame_InitWindow(lua_State* L)
+auto luaugame_InitWindow(lua_State* L) -> int
 {
 	const char* title = lua_tostring(L, -1);
 	int h = lua_tonumber(L, -2);
@@ -128,7 +96,7 @@ int luaugame_InitWindow(lua_State* L)
 	return 1;
 }
 
-int luaugame_ClearBackground(lua_State* L)
+auto luaugame_ClearBackground(lua_State* L) -> int
 {
 	if (!lua_istable(L, -1))
 		return 1;
@@ -149,7 +117,7 @@ int luaugame_ClearBackground(lua_State* L)
 	return 1;
 }
 
-int luaugame_DrawText(lua_State* L)
+auto luaugame_DrawText(lua_State* L) -> int
 {
 	unsigned char color[4];
 
@@ -172,7 +140,7 @@ int luaugame_DrawText(lua_State* L)
 	return 1;
 }
 
-int luaugame_DrawCircle(lua_State* L)
+auto luaugame_DrawCircle(lua_State* L) -> int
 {
 	unsigned char color[4];
 
@@ -193,13 +161,13 @@ int luaugame_DrawCircle(lua_State* L)
 	return 1;
 }
 
-int luaugame_GetFrameTime(lua_State* L)
+auto luaugame_GetFrameTime(lua_State* L) -> int
 {
 	lua_pushnumber(L, GetFrameTime());
 	return 1;
 }
 
-int luaugame_GetScreenSize(lua_State* L)
+auto luaugame_GetScreenSize(lua_State* L) -> int
 {
 	lua_pushnumber(L, GetScreenWidth());
 	printf("%d", GetScreenWidth());
@@ -208,9 +176,47 @@ int luaugame_GetScreenSize(lua_State* L)
 	return 2;
 }
 
+void luaugame_setup(lua_State* L)
+{
+	lua_rawgeti(L, LUA_REGISTRYINDEX, luaugame_State.setup_ref);
+	if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
+	    printf("%s\n", lua_tostring(L, -1));
+	}
+	
+	if (!luaugame_State.CustomInitWindow)
+		InitWindow(800, 450, "untitled luaugame");
+}
+
+void luaugame_update(lua_State* L)
+{
+  lua_rawgeti(L, LUA_REGISTRYINDEX, luaugame_State.update_ref);
+  lua_pushnumber(L, GetFrameTime());
+  if (lua_pcall(L, 1, 0, 0) != LUA_OK) {
+	  printf("%s\n", lua_tostring(L, -1));
+  }
+}
+
+void luaugame_draw(lua_State* L)
+{
+  lua_rawgeti(L, LUA_REGISTRYINDEX, luaugame_State.draw_ref);
+  if (lua_pcall(L, 0, 0, 0) != LUA_OK) {
+	  printf("%s\n", lua_tostring(L, -1));
+  }
+}
+
+void luaugame_nogame(lua_State* L)
+{
+    const char* nogame =
+	"function luaugame.setup()  end\n"
+	"function luaugame.update() end\n"
+	"function luaugame.draw()   end\n";
+    luaugame_dostring(L, nogame);
+}
+
 int main(int argc, char** argv)
 {
-	lua_State* L = luaL_newstate();
+    std::unique_ptr<lua_State, void (*)(lua_State*)> ML(luaL_newstate(), lua_close);
+	const auto& L = ML.get();
 	luaL_openlibs(L);
 
 	lua_pushcfunction(L, luaugame_InitWindow, "InitWindow");
@@ -236,12 +242,42 @@ int main(int argc, char** argv)
 
 	if (argc > 1) {
 		const char* path = TextFormat("%s/main.luau", argv[1]);
-		luaugame_dofile(L, path);
+		if (luaugame_dofile(L, path) != LUA_OK) {
+		    luaugame_nogame(L);
+		}
 	} else {
-		luaugame_dofile(L, "main.luau");
+	    luaugame_nogame(L);
 	}
 
 	luaL_sandbox(L);
+
+	lua_getglobal(L, "luaugame");
+	if (!lua_istable(L, -1)) {
+		printf("luaugame not table\n");
+		return 1;
+	}
+	
+	lua_getfield(L, -1, "setup");
+	if (!lua_isfunction(L, -1)) {
+	    printf("luaugame.setup is not a function");
+		return 1;
+	}
+		
+	luaugame_State.setup_ref = lua_ref(L, -1);
+
+	lua_getfield(L, -2, "update");
+	if (!lua_isfunction(L, -1)) {
+	    printf("luaugame.update is not a function");
+		return 1;
+	}
+	luaugame_State.update_ref = lua_ref(L, -1);
+
+	lua_getfield(L, -3, "draw");
+	if (!lua_isfunction(L, -1)) {
+	    printf("luaugame.draw is not a function");
+		return 1;
+	}
+	luaugame_State.draw_ref = lua_ref(L, -1);
 	
 	luaugame_setup(L);
 
@@ -249,13 +285,11 @@ int main(int argc, char** argv)
 		InitWindow(800, 450, "untitled luaugame");
 
 	while (!WindowShouldClose()) {
-		luaugame_update(L);
+	    luaugame_update(L);
 		BeginDrawing();
-			luaugame_draw(L);
+		    luaugame_draw(L);
 		EndDrawing();
 	}
 
 	CloseWindow();
-
-	lua_close(L);
 }
