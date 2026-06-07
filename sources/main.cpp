@@ -170,9 +170,7 @@ auto luaugame_GetFrameTime(lua_State* L) -> int
 auto luaugame_GetScreenSize(lua_State* L) -> int
 {
 	lua_pushnumber(L, GetScreenWidth());
-	printf("%d", GetScreenWidth());
 	lua_pushnumber(L, GetScreenHeight());
-	printf("%d", GetScreenHeight());
 	return 2;
 }
 
@@ -213,29 +211,29 @@ void luaugame_nogame(lua_State* L)
     luaugame_dostring(L, nogame);
 }
 
-int main(int argc, char** argv)
+static const luaL_Reg libluaugame[] = {
+    {"InitWindow", luaugame_InitWindow},
+    {"ClearBackground", luaugame_ClearBackground},
+    {"DrawText", luaugame_DrawText},
+    {"DrawCircle", luaugame_DrawCircle},
+    {"GetFrameTime", luaugame_GetFrameTime},
+    {"GetScreenSize", luaugame_GetScreenSize},
+    {NULL, NULL},
+};
+
+auto luaopen_libluaugame(lua_State* L) -> int
+{
+    luaL_register(L, "_G", libluaugame);
+    return 1;
+}
+
+int main(int argc, char* argv[])
 {
     std::unique_ptr<lua_State, void (*)(lua_State*)> ML(luaL_newstate(), lua_close);
 	const auto& L = ML.get();
 	luaL_openlibs(L);
-
-	lua_pushcfunction(L, luaugame_InitWindow, "InitWindow");
-	lua_setglobal(L, "InitWindow");
-
-	lua_pushcfunction(L, luaugame_ClearBackground, "ClearBackground");
-	lua_setglobal(L, "ClearBackground");
-
-	lua_pushcfunction(L, luaugame_DrawText, "DrawText");
-	lua_setglobal(L, "DrawText");
-
-	lua_pushcfunction(L, luaugame_DrawCircle, "DrawCircle");
-	lua_setglobal(L, "DrawCircle");
-
-	lua_pushcfunction(L, luaugame_GetScreenSize, "GetScreenSize");
-	lua_setglobal(L, "GetScreenSize");
-
-	lua_pushcfunction(L, luaugame_GetFrameTime, "GetFrameTime");
-	lua_setglobal(L, "GetFrameTime");
+	
+    luaopen_libluaugame(L);
 
 	lua_newtable(L);
 	lua_setglobal(L, "luaugame");
@@ -270,6 +268,7 @@ int main(int argc, char** argv)
 	    printf("luaugame.update is not a function");
 		return 1;
 	}
+	
 	luaugame_State.update_ref = lua_ref(L, -1);
 
 	lua_getfield(L, -3, "draw");
@@ -277,6 +276,7 @@ int main(int argc, char** argv)
 	    printf("luaugame.draw is not a function");
 		return 1;
 	}
+	
 	luaugame_State.draw_ref = lua_ref(L, -1);
 	
 	luaugame_setup(L);
