@@ -2,14 +2,14 @@ git submodules
 ```
 git submodule update --init --recursive
 ```
-# Premake 
+# CMake
 generate build files.
 ```
-premake5 gmake
+cmake -B build
 ```
 build
 ```
-make
+cmake --build build
 ```
 run
 ```
