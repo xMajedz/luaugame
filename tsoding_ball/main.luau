@@ -1,5 +1,3 @@
-local w, h, xpos, ypos, xvel, yvel, gravity, radius
-
 w, h = 1600, 900
 xpos, ypos = w/2, h/2
 xvel, yvel = 200, 200
