@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
+
 project(luaugame LANGUAGES CXX)
 
 add_subdirectory(vendor/luau EXCLUDE_FROM_ALL)
