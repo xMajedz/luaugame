@@ -1,3 +1,6 @@
+#define LUA_API
+#define LUACODE_API
+
 #include "lua.h"
 #include "lualib.h"
 #include "luacode.h"
@@ -8,25 +11,25 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct { char* data; size_t size; } bytecode_t;
+typedef struct { char* data; size_t size; } Bytecode;
 
-static bytecode_t load_bytecode(const char* string)
+static Bytecode LoadBytecode(const char* string)
 {
-    bytecode_t code;
+    Bytecode code;
     code.data = luau_compile(string, strlen(string), NULL, &code.size);
     return code;
 }
 
-static void unload_bytecode(bytecode_t code)
+static void UnloadBytecode(Bytecode code)
 {
     free(code.data);
 }
 
 int luaugame_loadstring(lua_State* L, const char* string, const char* chunkname)
 {
-    bytecode_t code = load_bytecode(string);
+    Bytecode code = LoadBytecode(string);
     int res = luau_load(L, chunkname, code.data, code.size, 0);
-    unload_bytecode(code);
+    UnloadBytecode(code);
     return res;
 }
 
@@ -56,20 +59,24 @@ int luaugame_InitWindow(lua_State* L)
 
 int luaugame_ClearBackground(lua_State* L)
 {
-    if (!lua_istable(L, 1))
-        return 1;
-
     Color color;
-
-    lua_rawgeti(L, 1, 1);
-    color.r = lua_tonumber(L, -1);
-    lua_rawgeti(L, 1, 2);
-    color.g = lua_tonumber(L, -1);
-    lua_rawgeti(L, 1, 3);
-    color.b = lua_tonumber(L, -1);
-    lua_rawgeti(L, 1, 4);
-    color.a = lua_tonumber(L, -1);
-
+    
+    if (lua_istable(L, 1)) {
+        lua_rawgeti(L, 1, 1);
+        color.r = lua_tonumber(L, -1);
+        lua_rawgeti(L, 1, 2);
+        color.g = lua_tonumber(L, -1);
+        lua_rawgeti(L, 1, 3);
+        color.b = lua_tonumber(L, -1);
+        lua_rawgeti(L, 1, 4);
+        color.a = lua_tonumber(L, -1);
+    } else if (lua_isnumber(L, 1)) {
+        color.r = lua_tonumber(L, 1);
+        color.g = lua_tonumber(L, 2);
+        color.b = lua_tonumber(L, 3);
+        color.a = lua_tonumber(L, 4);
+    }
+    
     ClearBackground(color);
 
     return 0;
@@ -114,7 +121,6 @@ int luaugame_DrawCircle(lua_State* L)
     color.b = lua_tounsigned(L, -1);
     lua_rawgeti(L, 4, 4);
     color.a = lua_tounsigned(L, -1);
-
     
     DrawCircle(posX, posY, radius, color);
 
@@ -172,7 +178,7 @@ static const luaL_Reg libluaugame[] = {
     {NULL, NULL},
 };
 
-int luaopen_luaugame(lua_State* L)
+static int luaopen_luaugame(lua_State* L)
 {
     lua_pushvalue(L, LUA_GLOBALSINDEX);
     luaL_register(L, NULL, libluaugame);
@@ -182,7 +188,7 @@ int luaopen_luaugame(lua_State* L)
 int main(int argc, char* argv[])
 {
     lua_State* L = luaL_newstate();
-    
+      
     luaL_openlibs(L);
 
     lua_pushcfunction(L, luaopen_luaugame, NULL);
@@ -208,4 +214,6 @@ int main(int argc, char* argv[])
     CloseWindow();
     
     lua_close(L);
+    
+    return 0;
 }
