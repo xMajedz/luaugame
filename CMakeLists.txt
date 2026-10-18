@@ -11,4 +11,6 @@ add_executable(luaugame sources/main.c)
 
 set_target_properties(luaugame PROPERTIES LINKER_LANGUAGE C)
 
+set_target_properties(luaugame PROPERTIES LINK_FLAGS "--preload-file tsoding_ball")
+
 target_link_libraries(luaugame PRIVATE Luau.Compiler Luau.VM raylib)

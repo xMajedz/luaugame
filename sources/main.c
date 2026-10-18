@@ -178,11 +178,21 @@ static const luaL_Reg libluaugame[] = {
     {NULL, NULL},
 };
 
+
+#include <emscripten/emscripten.h>
+
 static int luaopen_luaugame(lua_State* L)
 {
     lua_pushvalue(L, LUA_GLOBALSINDEX);
     luaL_register(L, NULL, libluaugame);
     return 1;
+}
+
+void luaugame_loop(void* ud)
+{
+    BeginDrawing();
+        luaugame_draw((lua_State*)ud);
+    EndDrawing();
 }
 
 int main(int argc, char* argv[])
@@ -196,21 +206,23 @@ int main(int argc, char* argv[])
 
     luaL_sandbox(L);
     luaL_sandboxthread(L);
+
+    const char* path = ".";
     
-    if (argc > 1) luaugame_loadfile(L, TextFormat("%s/main.luau", argv[1]), "=loadfile");
+    if (argc > 1) path = argv[1];
+    
+    TraceLog(LOG_ERROR, "%s\n", path);
+    
+    luaugame_loadfile(L, TextFormat("%s/main.luau", path), "=loadfile");
 
     if (lua_gettop(L) && lua_isfunction(L, -1) && lua_pcall(L, 0, 0, 0) != LUA_OK)
         TraceLog(LOG_ERROR, "%s", lua_tostring(L, -1));
-
+    
     if (!IsWindowReady())
         InitWindow(800, 450, "untitled luaugame");
 
-    while (!WindowShouldClose()) {
-        BeginDrawing();
-	    luaugame_draw(L);
-	EndDrawing();
-    }
-
+    emscripten_set_main_loop_arg(luaugame_loop, L, 0, 1);
+    
     CloseWindow();
     
     lua_close(L);
