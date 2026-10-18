@@ -5,7 +5,7 @@ git submodule update --init --recursive
 # CMake
 generate build files.
 ```
-cmake -B build
+emcmake cmake -B build
 ```
 build
 ```
@@ -13,6 +13,8 @@ cmake --build build
 ```
 run
 ```
-build/luaugame tsoding_ball
+npx http-server bin
+or
+python -m http.server -d bin
 
 ```
