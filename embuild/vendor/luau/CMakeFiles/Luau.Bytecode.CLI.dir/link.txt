@@ -1,1 +1,0 @@
-/home/bazzite/.local/bin/emsdk/upstream/emscripten/em++ @CMakeFiles/Luau.Bytecode.CLI.dir/objects1.rsp -o luau-bytecode.js @CMakeFiles/Luau.Bytecode.CLI.dir/linkLibs.rsp

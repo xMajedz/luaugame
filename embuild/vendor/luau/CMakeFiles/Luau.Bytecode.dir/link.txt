@@ -1,2 +1,0 @@
-/home/bazzite/.local/bin/emsdk/upstream/emscripten/emar qc libLuau.Bytecode.a CMakeFiles/Luau.Bytecode.dir/Bytecode/src/BytecodeBuilder.cpp.o CMakeFiles/Luau.Bytecode.dir/Bytecode/src/BytecodeGraph.cpp.o
-/home/bazzite/.local/bin/emsdk/upstream/emscripten/emranlib libLuau.Bytecode.a

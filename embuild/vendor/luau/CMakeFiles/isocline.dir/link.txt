@@ -1,2 +1,0 @@
-/home/bazzite/.local/bin/emsdk/upstream/emscripten/emar qc libisocline.a CMakeFiles/isocline.dir/extern/isocline/src/isocline.c.o
-/home/bazzite/.local/bin/emsdk/upstream/emscripten/emranlib libisocline.a

@@ -1,1 +1,0 @@
-/home/bazzite/.local/bin/emsdk/upstream/emscripten/em++ @CMakeFiles/Luau.UnitTest.dir/objects1.rsp -o Luau.UnitTest.js @CMakeFiles/Luau.UnitTest.dir/linkLibs.rsp
