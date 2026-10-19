@@ -16,7 +16,7 @@ run
 build/luaugame tsoding_ball
 
 ```
-# Build web demo with CMake
+# Build web demo with Emscripten + CMake
 generate build files.
 ```
 emcmake cmake -B build-web -DWEB_DEMO=ON -DBUNDLE=tsoding_ball
