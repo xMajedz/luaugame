@@ -1,0 +1,1 @@
+/home/bazzite/.local/bin/emsdk/upstream/emscripten/em++ @CMakeFiles/Luau.Reduce.CLI.dir/objects1.rsp -o luau-reduce.js @CMakeFiles/Luau.Reduce.CLI.dir/linkLibs.rsp

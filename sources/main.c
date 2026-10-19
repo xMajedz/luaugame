@@ -11,6 +11,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#endif
+
 typedef struct { char* data; size_t size; } Bytecode;
 
 static Bytecode LoadBytecode(const char* string)
@@ -179,8 +183,6 @@ static const luaL_Reg libluaugame[] = {
 };
 
 
-#include <emscripten/emscripten.h>
-
 static int luaopen_luaugame(lua_State* L)
 {
     lua_pushvalue(L, LUA_GLOBALSINDEX);
@@ -188,7 +190,7 @@ static int luaopen_luaugame(lua_State* L)
     return 1;
 }
 
-void luaugame_loop(void* ud)
+static void luaugame_loop(void* ud)
 {
     BeginDrawing();
         luaugame_draw((lua_State*)ud);
@@ -197,8 +199,12 @@ void luaugame_loop(void* ud)
 
 int main(int argc, char* argv[])
 {
+    const char* path = ".";
+    
+    if (argc > 1) path = argv[1];
+
     lua_State* L = luaL_newstate();
-      
+    
     luaL_openlibs(L);
 
     lua_pushcfunction(L, luaopen_luaugame, NULL);
@@ -206,12 +212,6 @@ int main(int argc, char* argv[])
 
     luaL_sandbox(L);
     luaL_sandboxthread(L);
-
-    const char* path = ".";
-    
-    if (argc > 1) path = argv[1];
-    
-    TraceLog(LOG_ERROR, "%s\n", path);
     
     luaugame_loadfile(L, TextFormat("%s/main.luau", path), "=loadfile");
 
@@ -221,7 +221,11 @@ int main(int argc, char* argv[])
     if (!IsWindowReady())
         InitWindow(800, 450, "untitled luaugame");
 
+#ifdef __EMSCRIPTEN__
     emscripten_set_main_loop_arg(luaugame_loop, L, 0, 1);
+#else
+    while (!WindowShouldClose()) luaugame_loop(L);
+#endif
     
     CloseWindow();
     

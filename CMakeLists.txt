@@ -11,6 +11,12 @@ add_executable(luaugame sources/main.c)
 
 set_target_properties(luaugame PROPERTIES LINKER_LANGUAGE C)
 
-set_target_properties(luaugame PROPERTIES LINK_FLAGS "--preload-file tsoding_ball")
+if(WEB_DEMO)
+  file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/index.html DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+  file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/${BUNDLE}/main.luau DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+  target_link_options(luaugame PRIVATE --preload-file .)
+endif()
 
 target_link_libraries(luaugame PRIVATE Luau.Compiler Luau.VM raylib)

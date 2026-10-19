@@ -1,0 +1,28 @@
+vendor/raylib/raylib/CMakeFiles/raylib.dir/rshapes.c.o: \
+  /home/bazzite/Programs/luaugame/vendor/raylib/src/rshapes.c \
+  /home/bazzite/Programs/luaugame/vendor/raylib/src/raylib.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdarg.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/stdarg.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/stdarg.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__stdarg_header_macro.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__stdarg___gnuc_va_list.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__stdarg_va_list.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__stdarg_va_arg.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__stdarg___va_copy.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__stdarg_va_copy.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/stdbool.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/stdbool.h \
+  /home/bazzite/Programs/luaugame/vendor/raylib/src/config.h \
+  /home/bazzite/Programs/luaugame/vendor/raylib/src/rlgl.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/compat/math.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/math.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/float.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/float.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__float_header_macro.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__float_float.h \
+  /home/bazzite/.local/bin/emsdk/upstream/lib/clang/24/include/__float_infinity_nan.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h

@@ -2,10 +2,10 @@ git submodules
 ```
 git submodule update --init --recursive
 ```
-# CMake
+# Build with CMake
 generate build files.
 ```
-emcmake cmake -B build
+cmake -B build
 ```
 build
 ```
@@ -13,8 +13,22 @@ cmake --build build
 ```
 run
 ```
-npx http-server bin
+build/luaugame tsoding_ball
+
+```
+# Build web demo with CMake
+generate build files.
+```
+emcmake cmake -B build-web -DWEB_DEMO=ON -DBUNDLE=tsoding_ball
+```
+build
+```
+cmake --build build-web
+```
+run
+```
+npx http-server build-web
 or
-python -m http.server -d bin
+python -m http.server -d build-web
 
 ```

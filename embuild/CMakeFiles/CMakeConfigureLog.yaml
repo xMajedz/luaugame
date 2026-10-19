@@ -1,0 +1,934 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/uname"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/uname"
+      - "/home/bazzite/.bun/bin/uname"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/uname"
+      - "/home/bazzite/.local/bin/uname"
+      - "/home/bazzite/bin/uname"
+      - "/usr/lib64/ccache/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:207 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The target system is: Emscripten - 1 - x86
+      The host system is: Linux - 7.2.7-ogc1.1.fc44.x86_64 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/gmake"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/gmake"
+      - "/home/bazzite/.bun/bin/gmake"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/gmake"
+      - "/home/bazzite/.local/bin/gmake"
+      - "/home/bazzite/bin/gmake"
+      - "/usr/lib64/ccache/gmake"
+      - "/usr/local/bin/gmake"
+    found: "/usr/bin/gmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-strip"
+      - "strip"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/llvm-strip"
+      - "/home/bazzite/.local/bin/emsdk/llvm-strip"
+      - "/home/bazzite/.bun/bin/llvm-strip"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/llvm-strip"
+      - "/home/bazzite/.local/bin/llvm-strip"
+      - "/home/bazzite/bin/llvm-strip"
+      - "/usr/lib64/ccache/llvm-strip"
+      - "/usr/local/bin/llvm-strip"
+    found: "/usr/bin/llvm-strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld.lld"
+      - "ld"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/ld.lld"
+      - "/home/bazzite/.local/bin/emsdk/ld.lld"
+      - "/home/bazzite/.bun/bin/ld.lld"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/ld.lld"
+      - "/home/bazzite/.local/bin/ld.lld"
+      - "/home/bazzite/bin/ld.lld"
+      - "/usr/lib64/ccache/ld.lld"
+      - "/usr/local/bin/ld.lld"
+    found: "/usr/bin/ld.lld"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objdump"
+      - "objdump"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/llvm-objdump"
+      - "/home/bazzite/.local/bin/emsdk/llvm-objdump"
+      - "/home/bazzite/.bun/bin/llvm-objdump"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/llvm-objdump"
+      - "/home/bazzite/.local/bin/llvm-objdump"
+      - "/home/bazzite/bin/llvm-objdump"
+      - "/usr/lib64/ccache/llvm-objdump"
+      - "/usr/local/bin/llvm-objdump"
+    found: "/usr/bin/llvm-objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objcopy"
+      - "objcopy"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/llvm-objcopy"
+      - "/home/bazzite/.local/bin/emsdk/llvm-objcopy"
+      - "/home/bazzite/.bun/bin/llvm-objcopy"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/llvm-objcopy"
+      - "/home/bazzite/.local/bin/llvm-objcopy"
+      - "/home/bazzite/bin/llvm-objcopy"
+      - "/usr/lib64/ccache/llvm-objcopy"
+      - "/usr/local/bin/llvm-objcopy"
+    found: "/usr/bin/llvm-objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/llvm-readelf"
+      - "/home/bazzite/.local/bin/emsdk/llvm-readelf"
+      - "/home/bazzite/.bun/bin/llvm-readelf"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/llvm-readelf"
+      - "/home/bazzite/.local/bin/llvm-readelf"
+      - "/home/bazzite/bin/llvm-readelf"
+      - "/usr/lib64/ccache/llvm-readelf"
+      - "/usr/local/bin/llvm-readelf"
+    found: "/usr/bin/llvm-readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/llvm-dlltool"
+      - "/home/bazzite/.local/bin/emsdk/llvm-dlltool"
+      - "/home/bazzite/.bun/bin/llvm-dlltool"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/llvm-dlltool"
+      - "/home/bazzite/.local/bin/llvm-dlltool"
+      - "/home/bazzite/bin/llvm-dlltool"
+      - "/usr/lib64/ccache/llvm-dlltool"
+      - "/usr/local/bin/llvm-dlltool"
+    found: "/usr/bin/llvm-dlltool"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/llvm-addr2line"
+      - "/home/bazzite/.local/bin/emsdk/llvm-addr2line"
+      - "/home/bazzite/.bun/bin/llvm-addr2line"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/llvm-addr2line"
+      - "/home/bazzite/.local/bin/llvm-addr2line"
+      - "/home/bazzite/bin/llvm-addr2line"
+      - "/usr/lib64/ccache/llvm-addr2line"
+      - "/usr/local/bin/llvm-addr2line"
+    found: "/usr/bin/llvm-addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:243 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/tapi"
+      - "/home/bazzite/.local/bin/emsdk/tapi"
+      - "/home/bazzite/.bun/bin/tapi"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/tapi"
+      - "/home/bazzite/.local/bin/tapi"
+      - "/home/bazzite/bin/tapi"
+      - "/usr/lib64/ccache/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/bin/tapi"
+      - "/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/sbin/tapi"
+      - "/sbin/tapi"
+      - "/bin/tapi"
+      - "/sbin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-24.0"
+      - "clang-scan-deps-24"
+      - "clang-scan-deps24"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/"
+      - "/home/bazzite/.local/bin/emsdk/"
+      - "/home/bazzite/.bun/bin/"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/"
+      - "/home/bazzite/.local/bin/"
+      - "/home/bazzite/bin/"
+      - "/usr/lib64/ccache/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/sbin/"
+      - "/sbin/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/clang-scan-deps-24.0"
+      - "/home/bazzite/.local/bin/emsdk/clang-scan-deps-24.0"
+      - "/home/bazzite/.bun/bin/clang-scan-deps-24.0"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/clang-scan-deps-24.0"
+      - "/home/bazzite/.local/bin/clang-scan-deps-24.0"
+      - "/home/bazzite/bin/clang-scan-deps-24.0"
+      - "/usr/lib64/ccache/clang-scan-deps-24.0"
+      - "/usr/local/bin/clang-scan-deps-24.0"
+      - "/usr/bin/clang-scan-deps-24.0"
+      - "/bin/clang-scan-deps-24.0"
+      - "/usr/local/sbin/clang-scan-deps-24.0"
+      - "/usr/sbin/clang-scan-deps-24.0"
+      - "/sbin/clang-scan-deps-24.0"
+      - "/bin/clang-scan-deps-24.0"
+      - "/sbin/clang-scan-deps-24.0"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/clang-scan-deps-24"
+      - "/home/bazzite/.local/bin/emsdk/clang-scan-deps-24"
+      - "/home/bazzite/.bun/bin/clang-scan-deps-24"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/clang-scan-deps-24"
+      - "/home/bazzite/.local/bin/clang-scan-deps-24"
+      - "/home/bazzite/bin/clang-scan-deps-24"
+      - "/usr/lib64/ccache/clang-scan-deps-24"
+      - "/usr/local/bin/clang-scan-deps-24"
+      - "/usr/bin/clang-scan-deps-24"
+      - "/bin/clang-scan-deps-24"
+      - "/usr/local/sbin/clang-scan-deps-24"
+      - "/usr/sbin/clang-scan-deps-24"
+      - "/sbin/clang-scan-deps-24"
+      - "/bin/clang-scan-deps-24"
+      - "/sbin/clang-scan-deps-24"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/clang-scan-deps24"
+      - "/home/bazzite/.local/bin/emsdk/clang-scan-deps24"
+      - "/home/bazzite/.bun/bin/clang-scan-deps24"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/clang-scan-deps24"
+      - "/home/bazzite/.local/bin/clang-scan-deps24"
+      - "/home/bazzite/bin/clang-scan-deps24"
+      - "/usr/lib64/ccache/clang-scan-deps24"
+      - "/usr/local/bin/clang-scan-deps24"
+      - "/usr/bin/clang-scan-deps24"
+      - "/bin/clang-scan-deps24"
+      - "/usr/local/sbin/clang-scan-deps24"
+      - "/usr/sbin/clang-scan-deps24"
+      - "/sbin/clang-scan-deps24"
+      - "/bin/clang-scan-deps24"
+      - "/sbin/clang-scan-deps24"
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/clang-scan-deps"
+      - "/home/bazzite/.local/bin/emsdk/clang-scan-deps"
+      - "/home/bazzite/.bun/bin/clang-scan-deps"
+      - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin/clang-scan-deps"
+      - "/home/bazzite/.local/bin/clang-scan-deps"
+      - "/home/bazzite/bin/clang-scan-deps"
+      - "/usr/lib64/ccache/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+    found: "/usr/bin/clang-scan-deps"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules/"
+    found: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/usr/share/cmake/Modules/CheckCCompilerFlag.cmake:105 (cmake_check_compiler_flag)"
+      - "vendor/raylib/cmake/AddIfFlagCompiles.cmake:3 (CHECK_C_COMPILER_FLAG)"
+      - "vendor/raylib/cmake/CompilerFlags.cmake:5 (add_if_flag_compiles)"
+      - "vendor/raylib/CMakeLists.txt:27 (include)"
+    checks:
+      - "Performing Test COMPILER_HAS_THOSE_TOGGLES"
+    directories:
+      source: "/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-0GPt6X"
+      binary: "/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-0GPt6X"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules;/home/bazzite/Programs/luaugame/vendor/raylib/cmake"
+    buildResult:
+      variable: "COMPILER_HAS_THOSE_TOGGLES"
+      cached: true
+      stdout: |
+        Change Dir: '/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-0GPt6X'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e29ff/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e29ff.dir/build.make CMakeFiles/cmTC_e29ff.dir/build
+        gmake[1]: Entering directory '/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-0GPt6X'
+        Building C object CMakeFiles/cmTC_e29ff.dir/src.c.o
+        /home/bazzite/.local/bin/emsdk/upstream/emscripten/emcc -DCOMPILER_HAS_THOSE_TOGGLES  -Werror=pointer-arith -MD -MT CMakeFiles/cmTC_e29ff.dir/src.c.o -MF CMakeFiles/cmTC_e29ff.dir/src.c.o.d -o CMakeFiles/cmTC_e29ff.dir/src.c.o -c /home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-0GPt6X/src.c
+        Linking C executable cmTC_e29ff.js
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e29ff.dir/link.txt --verbose=1
+        /home/bazzite/.local/bin/emsdk/upstream/emscripten/emcc @CMakeFiles/cmTC_e29ff.dir/objects1.rsp -o cmTC_e29ff.js
+        gmake[1]: Leaving directory '/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-0GPt6X'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/usr/share/cmake/Modules/CheckCSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "vendor/raylib/cmake/LibraryConfigurations.cmake:21 (check_c_source_compiles)"
+      - "vendor/raylib/cmake/LibraryConfigurations.cmake:265 (raylib_check_libatomic_required)"
+      - "vendor/raylib/src/CMakeLists.txt:57 (include)"
+    checks:
+      - "Performing Test RAYLIB_ATOMICS_WITHOUT_LIBATOMIC"
+    directories:
+      source: "/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-iXKHWY"
+      binary: "/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-iXKHWY"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/emscan-deps"
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: "-fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith "
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules;/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules;/home/bazzite/Programs/luaugame/vendor/raylib/cmake"
+    buildResult:
+      variable: "RAYLIB_ATOMICS_WITHOUT_LIBATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: '/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-iXKHWY'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_619e7/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_619e7.dir/build.make CMakeFiles/cmTC_619e7.dir/build
+        gmake[1]: Entering directory '/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-iXKHWY'
+        Building C object CMakeFiles/cmTC_619e7.dir/src.c.o
+        /home/bazzite/.local/bin/emsdk/upstream/emscripten/emcc -DRAYLIB_ATOMICS_WITHOUT_LIBATOMIC  -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   -std=gnu99 -MD -MT CMakeFiles/cmTC_619e7.dir/src.c.o -MF CMakeFiles/cmTC_619e7.dir/src.c.o.d -o CMakeFiles/cmTC_619e7.dir/src.c.o -c /home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-iXKHWY/src.c
+        Linking C executable cmTC_619e7.js
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_619e7.dir/link.txt --verbose=1
+        /home/bazzite/.local/bin/emsdk/upstream/emscripten/emcc -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith   @CMakeFiles/cmTC_619e7.dir/objects1.rsp -o cmTC_619e7.js
+        gmake[1]: Leaving directory '/home/bazzite/Programs/luaugame/embuild/CMakeFiles/CMakeScratch/TryCompile-iXKHWY'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules/"
+    found: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/bazzite/.local/bin/emsdk"
+        - "/home/bazzite/.local/bin/emsdk/upstream/emscripten"
+        - "/home/bazzite/.bun/bin"
+        - "/home/bazzite/.config/nvm/versions/node/v20.20.2/bin"
+        - "/home/bazzite/.local/bin"
+        - "/home/bazzite/bin"
+        - "/usr/lib64/ccache"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/local/sbin"
+        - "/usr/sbin"
+        - "/sbin"
+      CMAKE_INSTALL_PREFIX: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/bazzite/.local/bin/emsdk/upstream/emscripten/cache/sysroot"
+...
