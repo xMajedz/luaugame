@@ -16,7 +16,7 @@ if(WEB_DEMO)
 
   file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/${BUNDLE} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-  target_link_options(luaugame PRIVATE --preload-file ${BUNDLE})
+  target_link_options(luaugame PRIVATE --preload-file ${BUNDLE}@.)
 endif()
 
 target_link_libraries(luaugame PRIVATE Luau.Compiler Luau.VM raylib)
