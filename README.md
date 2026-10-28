@@ -13,7 +13,7 @@ cmake --build build
 ```
 run
 ```
-build/luaugame tsoding_ball
+build/luaugame tsoding-ball
 
 ```
 # Build web demo with Emscripten + CMake
