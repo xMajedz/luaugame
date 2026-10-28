@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: /tmp/tmpm5b1i6g8.js
+// include: /tmp/tmp0z6i8jmq.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -164,7 +164,6 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
       function assert(check, msg) {
         if (!check) throw new Error(msg);
       }
-Module['FS_createPath']("/", "tsoding-ball", true, true);
 
       async function processPackageData(arrayBuffer) {
         assert(arrayBuffer, 'Loading data file failed.');
@@ -200,25 +199,25 @@ Module['FS_createPath']("/", "tsoding-ball", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/tsoding-ball/main.luau", "start": 0, "end": 565}], "remote_package_size": 565});
+    loadPackage({"files": [{"filename": "/main.luau", "start": 0, "end": 565}], "remote_package_size": 565});
 
   })();
 
-// end include: /tmp/tmpm5b1i6g8.js
-// include: /tmp/tmp97tdogoa.js
+// end include: /tmp/tmp0z6i8jmq.js
+// include: /tmp/tmps1uonbb6.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: /tmp/tmp97tdogoa.js
-// include: /tmp/tmpmufjks9h.js
+  // end include: /tmp/tmps1uonbb6.js
+// include: /tmp/tmpxw0xjr4_.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: /tmp/tmpmufjks9h.js
+  // end include: /tmp/tmpxw0xjr4_.js
 
 
 var programArgs = [];
